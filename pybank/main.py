@@ -1,7 +1,7 @@
 import os
 import csv
 
-budget_data_csv = os.path.join("Resources", "budget_data.csv")
+inputFilePath = os.path.join('Resources','budget_data.csv')
 
 # define variables
 TotalMonths = []
@@ -13,8 +13,9 @@ MonthlyChangeTotal = 0
 InitialProfitCounter = 0
 
 # open file to use
-with open(budget_data_csv) as csvfile:
+with open(inputFilePath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
+    csvheader = next(csvreader)
 
 # for loop
     for row in csvreader:
@@ -43,7 +44,7 @@ print(f'Greatest Increase in Profits: {TotalMonths[MaxIndex]} ${MaxProfit}')
 print(f'Greatest Decrease in Profits: {TotalMonths[MinIndex]} ${MinProfit}')
 
 # output to file
-output = open("PyBank/FinancialAnalysis.txt", 'w')
+output = open('Analysis/result.txt', 'w')
 output.write(f'''
 Financial Analysis
 ------------------
